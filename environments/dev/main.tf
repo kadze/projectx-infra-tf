@@ -1,17 +1,5 @@
-provider "aws" {
-  region = "us-east-1"
-
-  default_tags {
-    tags = {
-      Environment = var.environment
-      ManagedBy   = "terraform"
-      CostCenter  = var.cost_center
-    }
-  }
-}
-
 module "network" {
-  source = "../../network"
+  source = "../../modules/network"
 
   environment          = var.environment
   vpc_cidr             = var.vpc_cidr
