@@ -1,6 +1,21 @@
-# root module
-module "routebox_dev_vpc" {
+provider "aws" {
+  region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Environment = var.environment
+      ManagedBy   = "terraform"
+      CostCenter  = var.cost_center
+    }
+  }
+}
+
+module "network" {
   source = "../../network"
-  cidr_block = var.root_cidr_block
-  tag_name   = var.root_tag_name
+
+  environment          = var.environment
+  vpc_cidr             = var.vpc_cidr
+  public_subnet_cidrs  = var.public_subnet_cidrs
+  private_subnet_cidrs = var.private_subnet_cidrs
+  cost_center          = var.cost_center
 }
