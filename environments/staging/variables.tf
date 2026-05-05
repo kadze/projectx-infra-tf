@@ -24,3 +24,9 @@ variable "cost_center" {
   description = "Tag value for cost tracking."
   default     = "platform"
 }
+
+variable "enable_nat_gateway" {
+  type        = bool
+  description = "Create a NAT gateway and Elastic IP in this environment."
+  default     = false
+}

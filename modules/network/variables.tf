@@ -43,3 +43,9 @@ variable "cost_center" {
   description = "Tag value applied to billable resources."
   default     = "platform"
 }
+
+variable "enable_nat_gateway" {
+  type        = bool
+  description = "Create a NAT gateway and its Elastic IP. Set false in dev to save costs; private subnets will have no egress route."
+  default     = true
+}
