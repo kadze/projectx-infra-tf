@@ -1,6 +1,10 @@
-# root module
-module "routebox_dev_vpc" {
-  source = "../../network"
-  cidr_block = var.root_cidr_block
-  tag_name   = var.root_tag_name
+module "network" {
+  source = "../../modules/network"
+
+  environment          = var.environment
+  vpc_cidr             = var.vpc_cidr
+  public_subnet_cidrs  = var.public_subnet_cidrs
+  private_subnet_cidrs = var.private_subnet_cidrs
+  cost_center          = var.cost_center
+  enable_nat_gateway   = var.enable_nat_gateway
 }
