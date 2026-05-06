@@ -17,3 +17,8 @@ output "node_security_group_id" {
   description = "Cluster-managed security group ID attached to worker nodes."
   value       = aws_eks_cluster.this.vpc_config[0].cluster_security_group_id
 }
+
+output "oidc_provider_arn" {
+  description = "ARN of the IAM OIDC provider (used for IRSA)."
+  value       = aws_iam_openid_connect_provider.this.arn
+}
