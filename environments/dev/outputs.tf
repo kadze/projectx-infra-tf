@@ -67,3 +67,23 @@ output "jenkins_security_group_id" {
   description = "Jenkins security group ID."
   value       = module.network.jenkins_security_group_id
 }
+
+output "cluster_name" {
+  description = "EKS cluster name."
+  value       = module.eks.cluster_name
+}
+
+output "cluster_endpoint" {
+  description = "EKS cluster API server endpoint."
+  value       = module.eks.cluster_endpoint
+}
+
+output "oidc_issuer_url" {
+  description = "OIDC issuer URL for the cluster (used for IRSA)."
+  value       = module.eks.oidc_issuer_url
+}
+
+output "node_security_group_id" {
+  description = "Cluster-managed security group ID attached to worker nodes."
+  value       = module.eks.node_security_group_id
+}

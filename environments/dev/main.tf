@@ -8,3 +8,25 @@ module "network" {
   cost_center          = var.cost_center
   enable_nat_gateway   = var.enable_nat_gateway
 }
+
+module "eks" {
+  source = "../../modules/eks"
+
+  cluster_name       = "routebox-dev"
+  kubernetes_version = "1.35"
+  environment        = "dev"
+
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnet_ids
+
+  node_instance_type = "t3.medium"
+  node_desired_size  = 2
+  node_min_size      = 1
+  node_max_size      = 3
+
+  tags = {
+    Environment = "dev"
+    Project     = "routebox"
+    ManagedBy   = "terraform"
+  }
+}
