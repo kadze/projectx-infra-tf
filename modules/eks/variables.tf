@@ -16,7 +16,12 @@ variable "vpc_id" {
 
 variable "private_subnet_ids" {
   type        = list(string)
-  description = "Private subnet IDs from the network module."
+  description = "Private subnet IDs from the network module. Used for the EKS control plane vpc_config."
+}
+
+variable "node_subnet_ids" {
+  type        = list(string)
+  description = "Subnet IDs where worker nodes are deployed. In dev use public subnets (no NAT needed). In staging/prod use private subnets."
 }
 
 variable "node_instance_type" {
