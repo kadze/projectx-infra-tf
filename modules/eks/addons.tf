@@ -33,17 +33,3 @@ resource "aws_eks_addon" "kube_proxy" {
 
   depends_on = [aws_eks_node_group.this]
 }
-
-resource "aws_eks_addon" "ebs_csi_driver" {
-  cluster_name                = aws_eks_cluster.this.name
-  addon_name                  = "aws-ebs-csi-driver"
-  resolve_conflicts_on_update = "OVERWRITE"
-  # TODO: create an IRSA role for the EBS CSI driver and set service_account_role_arn here
-  service_account_role_arn = null
-
-  tags = merge(var.tags, {
-    Name = "${var.cluster_name}-addon-ebs-csi-driver"
-  })
-
-  depends_on = [aws_eks_node_group.this]
-}
