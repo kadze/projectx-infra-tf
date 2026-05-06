@@ -4,7 +4,7 @@ resource "aws_security_group" "nodes" {
   vpc_id      = var.vpc_id
 
   egress {
-    description = "All outbound — image pulls, AWS APIs, DNS"
+    description = "All outbound - image pulls, AWS APIs, DNS"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
