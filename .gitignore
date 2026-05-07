@@ -1,3 +1,6 @@
+# Claude Code settings
+.claude/
+
 # Local .terraform directories
 .terraform/
 
