@@ -33,4 +33,6 @@ eks_node_max_size                = 4
 # IMPORTANT: set this to your SSO admin role ARN before applying,
 # otherwise nobody will have kubectl access (bootstrap_cluster_creator_admin_permissions = false).
 # Find your role ARN: AWS Console -> IAM -> Roles -> search AWSReservedSSO_Administrator
-eks_cluster_admin_role_arns = []
+eks_cluster_admin_role_arns = [
+  "arn:aws:iam::414866527708:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_1a0f858bba60ce65",
+]
