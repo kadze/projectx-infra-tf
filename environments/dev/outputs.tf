@@ -112,3 +112,17 @@ output "kms_key_arn" {
   description = "KMS key ARN used for K8s secrets envelope encryption."
   value       = module.eks.kms_key_arn
 }
+
+# ------------------------------------------------------------------
+# ECR outputs.
+# ------------------------------------------------------------------
+
+output "ecr_repository_urls" {
+  description = "ECR repository URLs keyed by service name."
+  value       = module.ecr.repository_urls
+}
+
+output "ecr_repository_arns" {
+  description = "ECR repository ARNs keyed by service name."
+  value       = module.ecr.repository_arns
+}

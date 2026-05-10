@@ -8,3 +8,10 @@ module "network" {
   cost_center          = var.cost_center
   enable_nat_gateway   = var.enable_nat_gateway
 }
+
+module "ecr" {
+  source = "../../modules/ecr"
+
+  environment = var.environment
+  cost_center = var.cost_center
+}
