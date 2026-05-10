@@ -67,3 +67,17 @@ output "jenkins_security_group_id" {
   description = "Jenkins security group ID."
   value       = module.network.jenkins_security_group_id
 }
+
+# ------------------------------------------------------------------
+# ECR outputs.
+# ------------------------------------------------------------------
+
+output "ecr_repository_urls" {
+  description = "ECR repository URLs keyed by service name."
+  value       = module.ecr.repository_urls
+}
+
+output "ecr_repository_arns" {
+  description = "ECR repository ARNs keyed by service name."
+  value       = module.ecr.repository_arns
+}
