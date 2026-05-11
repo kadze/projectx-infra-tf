@@ -63,11 +63,6 @@ output "rds_security_group_id" {
   value       = module.network.rds_security_group_id
 }
 
-output "jenkins_security_group_id" {
-  description = "Jenkins security group ID."
-  value       = module.network.jenkins_security_group_id
-}
-
 # ------------------------------------------------------------------
 # ECR outputs.
 # ------------------------------------------------------------------

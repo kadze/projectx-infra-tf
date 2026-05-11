@@ -79,3 +79,13 @@ variable "eks_cluster_admin_role_arns" {
   type        = list(string)
   description = "IAM role ARNs to grant cluster-admin via EKS access entries. Typically the SSO admin role for this account."
 }
+
+# ------------------------------------------------------------------
+# RDS — mirrors the rds module's variables. Values come from dev.tfvars.
+# ------------------------------------------------------------------
+
+variable "rds_db_master_password" {
+  type        = string
+  description = "Master password for the RDS instance. Pass via TF_VAR_rds_db_master_password or a gitignored .auto.tfvars — do not commit."
+  sensitive   = true
+}

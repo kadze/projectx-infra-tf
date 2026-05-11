@@ -53,17 +53,9 @@ output "alb_security_group_id" {
   value       = aws_security_group.alb.id
 }
 
-output "ecs_service_security_group_id" {
-  description = "ECS service security group ID. Matches CFN export routebox-<env>-ecs-sg-id."
-  value       = aws_security_group.ecs.id
-}
 
 output "rds_security_group_id" {
   description = "RDS security group ID. Matches CFN export routebox-<env>-rds-sg-id."
   value       = aws_security_group.rds.id
 }
 
-output "jenkins_security_group_id" {
-  description = "Jenkins security group ID. Matches CFN export routebox-<env>-jenkins-sg-id."
-  value       = aws_security_group.jenkins.id
-}
