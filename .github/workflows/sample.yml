@@ -8,14 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "1.14.6"
       - name: Run a multi-line script
         run: |
-          echo "Current dir:"
-          pwd
-          echo "It contains:"
-          ls
-          tree .
-          echo "wait for 60 sec"
-          sleep 60
+          # credentials removed from history
+          # credentials removed from history
+          # credentials removed from history
           
+          cd environments/dev
+
+          terraform init
+
+          terraform apply -var-file=dev.tfvars
           
