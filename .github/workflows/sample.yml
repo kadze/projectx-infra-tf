@@ -22,7 +22,7 @@ jobs:
           # credentials removed from history
           # credentials removed from history
           # credentials removed from history
-          
+
           cd environments/dev
 
           terraform init
