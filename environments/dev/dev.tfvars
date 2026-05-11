@@ -36,3 +36,13 @@ eks_node_max_size                = 4
 eks_cluster_admin_role_arns = [
   "arn:aws:iam::414866527708:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_1a0f858bba60ce65",
 ]
+
+# ------------------------------------------------------------------
+# RDS
+# ------------------------------------------------------------------
+
+# rds_db_master_password is NOT set here — never commit secrets to tfvars.
+# Before applying, export it:
+#   export TF_VAR_rds_db_master_password="your-password-min-16-chars"
+# Or create a gitignored environments/dev/secrets.auto.tfvars with:
+#   rds_db_master_password = "your-password-min-16-chars"

@@ -53,19 +53,10 @@ output "alb_security_group_id" {
   value       = module.network.alb_security_group_id
 }
 
-output "ecs_service_security_group_id" {
-  description = "ECS service tasks SG ID."
-  value       = module.network.ecs_service_security_group_id
-}
 
 output "rds_security_group_id" {
   description = "RDS Postgres SG ID."
   value       = module.network.rds_security_group_id
-}
-
-output "jenkins_security_group_id" {
-  description = "Jenkins EC2 SG ID."
-  value       = module.network.jenkins_security_group_id
 }
 
 # ------------------------------------------------------------------
@@ -125,4 +116,28 @@ output "ecr_repository_urls" {
 output "ecr_repository_arns" {
   description = "ECR repository ARNs keyed by service name."
   value       = module.ecr.repository_arns
+}
+
+# ------------------------------------------------------------------
+# RDS outputs.
+# ------------------------------------------------------------------
+
+output "db_endpoint" {
+  description = "RDS Postgres hostname. Matches CFN export routebox-dev-db-endpoint."
+  value       = module.rds.db_endpoint
+}
+
+output "db_port" {
+  description = "RDS Postgres port."
+  value       = module.rds.db_port
+}
+
+output "db_instance_identifier" {
+  description = "RDS instance identifier. Matches CFN export routebox-dev-db-id."
+  value       = module.rds.db_instance_identifier
+}
+
+output "db_name" {
+  description = "Database name."
+  value       = module.rds.db_name
 }
