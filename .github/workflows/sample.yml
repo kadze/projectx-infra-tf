@@ -1,6 +1,8 @@
 
 name: CI
 on:
+  push:
+ 
   workflow_dispatch:
   
 jobs:
@@ -11,9 +13,6 @@ jobs:
       - uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: "1.14.6"
-      - name: Create tfvars
-        run: |
-          echo "rds_db_master_password=${{ secrets.DB_PASSWORD }}" > secrets.auto.tfvars
           
       - name: Run a multi-line script
         run: |
@@ -26,4 +25,6 @@ jobs:
           terraform init
 
           terraform apply -var-file=dev.tfvars -input=false -auto-approve
+        env:
+          TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
           

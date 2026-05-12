@@ -46,3 +46,4 @@ eks_cluster_admin_role_arns = [
 #   export TF_VAR_rds_db_master_password="your-password-min-16-chars"
 # Or create a gitignored environments/dev/secrets.auto.tfvars with:
 #   rds_db_master_password = "your-password-min-16-chars"
+#
