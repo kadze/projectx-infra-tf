@@ -35,4 +35,5 @@ eks_node_max_size                = 4
 # Find your role ARN: AWS Console -> IAM -> Roles -> search AWSReservedSSO_Administrator
 eks_cluster_admin_role_arns = [
   "arn:aws:iam::414866527708:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_1a0f858bba60ce65",
+  "arn:aws:iam::414866527708:role/gha-routebox-shipments-api-dev",
 ]
