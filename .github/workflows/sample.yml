@@ -1,5 +1,5 @@
 
-name: CI
+name: Terraform Delpoy
 on:
   push:
  
@@ -10,10 +10,15 @@ permissions:
   contents: read    # This is required for actions/checkout
 
 jobs:
-  build:
+  infra-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./environments/dev
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: "1.14.6"
@@ -25,13 +30,18 @@ jobs:
           role-to-assume: ${{vars.AWS_ROLE_ARN}}
           role-session-name: gha-session
 
-      - name: Run a multi-line script
+      - name: Terraform init
         run: |
-          cd environments/dev
-
           terraform init
 
+      - name: Terraform plan
+        run: |
+          terraform plan -var-file=dev.tfvars -input=false
+
+      - name: Terraform apply
+        run: |
           terraform apply -var-file=dev.tfvars -input=false -auto-approve
+
         env:
           TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
           
