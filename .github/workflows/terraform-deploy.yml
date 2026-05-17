@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   infra-deploy:
-    environment: ${{ github.ref == 'refs/head/staging' && 'staging' || 'dev' }}
+    environment: ${{ github.ref == 'refs/heads/staging' && 'staging' || 'dev' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -28,12 +28,12 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v6.1.0
         with:
           aws-region: us-east-1
-          role-to-assume: ${{vars.IAM_ROLE}}
+          role-to-assume: ${{vars.TF_ROOT_DIR}}
           role-session-name: gha-session
 
-      # - name: Terraform init
-      #   run: |
-      #     terraform init
+      - name: Terraform init
+        run: |
+          terraform init
 
       # - name: Terraform plan
       #   run: |
