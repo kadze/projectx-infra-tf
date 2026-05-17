@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   infra-deploy:
-    environment: ${{ github.ref == 'refs/heads/staging' && 'staging' || 'dev' }}
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/staging' && 'staging' || 'dev' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -31,21 +31,21 @@ jobs:
           role-to-assume: ${{vars.IAM_ROLE}}
           role-session-name: gha-session
 
-      # - name: Terraform init
-      #   run: |
-      #     terraform init
+      - name: Terraform init
+        run: |
+          terraform init
 
-      # - name: Terraform plan
-      #   run: |
-      #     terraform plan -var-file=dev.tfvars -input=false
+      - name: Terraform plan
+        run: |
+          terraform plan -var-file=${{ vars.TF_PARAM_FILE }} -input=false
 
-      #   env:
-      #     TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
+        env:
+          TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
 
-      # - name: Terraform apply
-      #   run: |
-      #     terraform apply -var-file=dev.tfvars -input=false -auto-approve
+      - name: Terraform apply
+        run: |
+          terraform apply -var-file=${{ vars.TF_PARAM_FILE }} -input=false -auto-approve
 
-      #   env:
-      #     TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
+        env:
+          TF_VAR_rds_db_master_password: ${{ secrets.DB_PASSWORD }}
           
