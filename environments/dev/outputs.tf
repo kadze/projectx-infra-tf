@@ -63,46 +63,46 @@ output "rds_security_group_id" {
 # EKS outputs.
 # ------------------------------------------------------------------
 
-output "cluster_name" {
-  description = "EKS cluster name."
-  value       = module.eks.cluster_name
-}
+# output "cluster_name" {
+#   description = "EKS cluster name."
+#   value       = module.eks.cluster_name
+# }
 
-output "cluster_endpoint" {
-  description = "Kubernetes API server endpoint."
-  value       = module.eks.cluster_endpoint
-}
+# output "cluster_endpoint" {
+#   description = "Kubernetes API server endpoint."
+#   value       = module.eks.cluster_endpoint
+# }
 
-output "cluster_certificate_authority_data" {
-  description = "Base64-encoded cluster CA cert."
-  value       = module.eks.cluster_certificate_authority_data
-  sensitive   = true
-}
+# output "cluster_certificate_authority_data" {
+#   description = "Base64-encoded cluster CA cert."
+#   value       = module.eks.cluster_certificate_authority_data
+#   sensitive   = true
+# }
 
-output "cluster_oidc_issuer_url" {
-  description = "OIDC issuer URL for IRSA."
-  value       = module.eks.cluster_oidc_issuer_url
-}
+# output "cluster_oidc_issuer_url" {
+#   description = "OIDC issuer URL for IRSA."
+#   value       = module.eks.cluster_oidc_issuer_url
+# }
 
-output "cluster_security_group_id" {
-  description = "EKS-managed cluster SG ID."
-  value       = module.eks.cluster_security_group_id
-}
+# output "cluster_security_group_id" {
+#   description = "EKS-managed cluster SG ID."
+#   value       = module.eks.cluster_security_group_id
+# }
 
-output "node_security_group_id" {
-  description = "Node SG ID. Same as cluster SG in this configuration."
-  value       = module.eks.node_security_group_id
-}
+# output "node_security_group_id" {
+#   description = "Node SG ID. Same as cluster SG in this configuration."
+#   value       = module.eks.node_security_group_id
+# }
 
-output "oidc_provider_arn" {
-  description = "IRSA OIDC provider ARN."
-  value       = module.eks.oidc_provider_arn
-}
+# output "oidc_provider_arn" {
+#   description = "IRSA OIDC provider ARN."
+#   value       = module.eks.oidc_provider_arn
+# }
 
-output "kms_key_arn" {
-  description = "KMS key ARN used for K8s secrets envelope encryption."
-  value       = module.eks.kms_key_arn
-}
+# output "kms_key_arn" {
+#   description = "KMS key ARN used for K8s secrets envelope encryption."
+#   value       = module.eks.kms_key_arn
+# }
 
 # ------------------------------------------------------------------
 # ECR outputs.
@@ -122,22 +122,22 @@ output "ecr_repository_arns" {
 # RDS outputs.
 # ------------------------------------------------------------------
 
-output "db_endpoint" {
-  description = "RDS Postgres hostname. Matches CFN export routebox-dev-db-endpoint."
-  value       = module.rds.db_endpoint
-}
+# output "db_endpoint" {
+#   description = "RDS Postgres hostname. Matches CFN export routebox-dev-db-endpoint."
+#   value       = module.rds.db_endpoint
+# }
 
-output "db_port" {
-  description = "RDS Postgres port."
-  value       = module.rds.db_port
-}
+# output "db_port" {
+#   description = "RDS Postgres port."
+#   value       = module.rds.db_port
+# }
 
-output "db_instance_identifier" {
-  description = "RDS instance identifier. Matches CFN export routebox-dev-db-id."
-  value       = module.rds.db_instance_identifier
-}
+# output "db_instance_identifier" {
+#   description = "RDS instance identifier. Matches CFN export routebox-dev-db-id."
+#   value       = module.rds.db_instance_identifier
+# }
 
-output "db_name" {
-  description = "Database name."
-  value       = module.rds.db_name
-}
+# output "db_name" {
+#   description = "Database name."
+#   value       = module.rds.db_name
+# }
