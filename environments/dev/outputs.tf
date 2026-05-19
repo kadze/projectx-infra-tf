@@ -118,9 +118,9 @@ output "ecr_repository_arns" {
   value       = module.ecr.repository_arns
 }
 
-------------------------------------------------------------------
-RDS outputs.
-------------------------------------------------------------------
+# ------------------------------------------------------------------
+# RDS outputs.
+# ------------------------------------------------------------------
 
 output "db_endpoint" {
   description = "RDS Postgres hostname. Matches CFN export routebox-dev-db-endpoint."
