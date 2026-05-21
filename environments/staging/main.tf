@@ -34,14 +34,14 @@ module "eks" {
   cost_center                  = var.cost_center
 }
 
-module "rds" {
-  source = "../../modules/rds"
+# module "rds" {
+#   source = "../../modules/rds"
 
-  environment            = var.environment
-  vpc_id                 = module.network.vpc_id
-  private_subnet_ids     = module.network.private_subnet_ids
-  rds_security_group_id  = module.network.rds_security_group_id
-  node_security_group_id = module.eks.node_security_group_id
-  db_master_password     = var.rds_db_master_password
-  cost_center            = var.cost_center
-}
+#   environment            = var.environment
+#   vpc_id                 = module.network.vpc_id
+#   private_subnet_ids     = module.network.private_subnet_ids
+#   rds_security_group_id  = module.network.rds_security_group_id
+#   node_security_group_id = module.eks.node_security_group_id
+#   db_master_password     = var.rds_db_master_password
+#   cost_center            = var.cost_center
+# }
