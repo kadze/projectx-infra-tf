@@ -93,3 +93,33 @@ variable "cost_center" {
   description = "Cost-allocation tag value."
   default     = "platform"
 }
+
+# ------------------------------------------------------------------
+# cert-manager / TLS
+# ------------------------------------------------------------------
+
+variable "cert_manager_chart_version" {
+  description = "cert-manager Helm chart version."
+  type        = string
+  default     = "v1.17.2"
+}
+
+variable "acme_email" {
+  description = "Email address for Let's Encrypt ACME account notifications."
+  type        = string
+}
+
+variable "route53_account_id" {
+  description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
+  type        = string
+}
+
+variable "route53_hosted_zone_id" {
+  description = "Route53 hosted zone ID for ACME DNS-01 challenge."
+  type        = string
+}
+
+variable "route53_deployment_role_arn" {
+  description = "ARN of an IAM role in the Route53 account that Terraform assumes (via aws.route53_account provider) to create the cert-manager delegate role there."
+  type        = string
+}

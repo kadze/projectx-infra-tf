@@ -89,3 +89,33 @@ variable "rds_db_master_password" {
   description = "Master password for the RDS instance. Pass via TF_VAR_rds_db_master_password or a gitignored .auto.tfvars — do not commit."
   sensitive   = true
 }
+
+# ------------------------------------------------------------------
+# cert-manager / TLS — mirrors the eks module's cert-manager variables.
+# ------------------------------------------------------------------
+
+variable "cert_manager_chart_version" {
+  type        = string
+  description = "cert-manager Helm chart version."
+  default     = "v1.17.2"
+}
+
+variable "acme_email" {
+  type        = string
+  description = "Email address for Let's Encrypt ACME account notifications."
+}
+
+variable "route53_account_id" {
+  type        = string
+  description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
+}
+
+variable "route53_hosted_zone_id" {
+  type        = string
+  description = "Route53 hosted zone ID for ACME DNS-01 challenge."
+}
+
+variable "route53_deployment_role_arn" {
+  type        = string
+  description = "ARN of an IAM role in the Route53 account (var.route53_account_id) that Terraform assumes to create the cert-manager delegate role there. Must already exist before applying."
+}

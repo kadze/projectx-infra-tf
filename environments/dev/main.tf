@@ -32,6 +32,12 @@ module "ecr" {
 #   node_max_size                = var.eks_node_max_size
 #   cluster_admin_role_arns      = var.eks_cluster_admin_role_arns
 #   cost_center                  = var.cost_center
+#
+#   cert_manager_chart_version  = var.cert_manager_chart_version
+#   acme_email                  = var.acme_email
+#   route53_account_id          = var.route53_account_id
+#   route53_hosted_zone_id      = var.route53_hosted_zone_id
+#   route53_deployment_role_arn = var.route53_deployment_role_arn
 # }
 
 # module "rds" {
