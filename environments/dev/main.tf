@@ -35,7 +35,6 @@ module "eks" {
 
   route53_account_id          = var.route53_account_id
   route53_hosted_zone_id      = var.route53_hosted_zone_id
-  route53_deployment_role_arn = var.route53_deployment_role_arn
 }
 
 module "rds" {

@@ -104,7 +104,3 @@ variable "route53_hosted_zone_id" {
   description = "Route53 hosted zone ID for ACME DNS-01 challenge."
 }
 
-variable "route53_deployment_role_arn" {
-  type        = string
-  description = "ARN of an IAM role in the Route53 account (var.route53_account_id) that Terraform assumes to create the cert-manager delegate role there. Must already exist before applying."
-}

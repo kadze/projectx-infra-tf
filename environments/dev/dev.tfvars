@@ -44,9 +44,3 @@ eks_cluster_admin_role_arns = [
 
 route53_account_id     = "381492277294"
 route53_hosted_zone_id = "Z07170741J23D2RIICAXK"
-
-# route53_deployment_role_arn — IAM role that already exists in account 381492277294
-# and allows Terraform to create/manage IAM roles there (iam:CreateRole, iam:PutRolePolicy, etc.).
-# Example: "arn:aws:iam::381492277294:role/routebox-terraform-admin"
-# Set this before applying with the EKS module enabled.
-route53_deployment_role_arn = "arn:aws:iam::381492277294:role/REPLACE_ME"

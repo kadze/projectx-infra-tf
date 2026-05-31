@@ -130,19 +130,3 @@ resource "aws_eks_node_group" "main" {
     aws_iam_role_policy_attachment.node_AmazonSSMManagedInstanceCore,
   ]
 }
-
-# ------------------------------------------------------------------
-# Second AWS provider scoped to the Route53 account (381492277294).
-# Terraform assumes var.route53_deployment_role_arn (a role that
-# already exists in that account) to create the cert-manager
-# delegate role there. Route53 is global so region is cosmetic.
-# ------------------------------------------------------------------
-
-provider "aws" {
-  alias  = "route53_account"
-  region = "us-east-1"
-
-  assume_role {
-    role_arn = var.route53_deployment_role_arn
-  }
-}

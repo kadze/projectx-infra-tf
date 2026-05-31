@@ -108,7 +108,3 @@ variable "route53_hosted_zone_id" {
   type        = string
 }
 
-variable "route53_deployment_role_arn" {
-  description = "ARN of an IAM role in the Route53 account that Terraform assumes (via aws.route53_account provider) to create the cert-manager delegate role there."
-  type        = string
-}
