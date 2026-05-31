@@ -98,17 +98,6 @@ variable "cost_center" {
 # cert-manager / TLS
 # ------------------------------------------------------------------
 
-variable "cert_manager_chart_version" {
-  description = "cert-manager Helm chart version."
-  type        = string
-  default     = "v1.17.2"
-}
-
-variable "acme_email" {
-  description = "Email address for Let's Encrypt ACME account notifications."
-  type        = string
-}
-
 variable "route53_account_id" {
   description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
   type        = string

@@ -10,19 +10,7 @@ terraform {
       source  = "hashicorp/tls"
       version = "~> 4.0"
     }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 2.0"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 2.0"
-    }
-    kubectl = {
-      source  = "gavinbunney/kubectl"
-      version = "~> 1.14"
-    }
-  }
+}
 }
 
 locals {
@@ -141,36 +129,6 @@ resource "aws_eks_node_group" "main" {
     aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly,
     aws_iam_role_policy_attachment.node_AmazonSSMManagedInstanceCore,
   ]
-}
-
-# ------------------------------------------------------------------
-# Cluster auth token — used by kubernetes/helm/kubectl providers.
-# Fetched dynamically on each apply so the token never goes stale.
-# ------------------------------------------------------------------
-
-data "aws_eks_cluster_auth" "main" {
-  name = aws_eks_cluster.main.name
-}
-
-provider "kubernetes" {
-  host                   = aws_eks_cluster.main.endpoint
-  token                  = data.aws_eks_cluster_auth.main.token
-  cluster_ca_certificate = base64decode(aws_eks_cluster.main.certificate_authority[0].data)
-}
-
-provider "helm" {
-  kubernetes {
-    host                   = aws_eks_cluster.main.endpoint
-    token                  = data.aws_eks_cluster_auth.main.token
-    cluster_ca_certificate = base64decode(aws_eks_cluster.main.certificate_authority[0].data)
-  }
-}
-
-provider "kubectl" {
-  host                   = aws_eks_cluster.main.endpoint
-  token                  = data.aws_eks_cluster_auth.main.token
-  cluster_ca_certificate = base64decode(aws_eks_cluster.main.certificate_authority[0].data)
-  load_config_file       = false
 }
 
 # ------------------------------------------------------------------

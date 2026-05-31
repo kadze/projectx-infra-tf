@@ -42,11 +42,8 @@ eks_cluster_admin_role_arns = [
 # cert-manager / TLS
 # ------------------------------------------------------------------
 
-acme_email             = "shevtsov.ap@gmail.com"
 route53_account_id     = "381492277294"
 route53_hosted_zone_id = "Z07170741J23D2RIICAXK"
-
-# cert_manager_chart_version — uses default v1.17.2; override here if needed.
 
 # route53_deployment_role_arn — IAM role that already exists in account 381492277294
 # and allows Terraform to create/manage IAM roles there (iam:CreateRole, iam:PutRolePolicy, etc.).

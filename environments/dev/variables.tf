@@ -94,17 +94,6 @@ variable "rds_db_master_password" {
 # cert-manager / TLS — mirrors the eks module's cert-manager variables.
 # ------------------------------------------------------------------
 
-variable "cert_manager_chart_version" {
-  type        = string
-  description = "cert-manager Helm chart version."
-  default     = "v1.17.2"
-}
-
-variable "acme_email" {
-  type        = string
-  description = "Email address for Let's Encrypt ACME account notifications."
-}
-
 variable "route53_account_id" {
   type        = string
   description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
