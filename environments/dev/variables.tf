@@ -89,3 +89,18 @@ variable "rds_db_master_password" {
   description = "Master password for the RDS instance. Pass via TF_VAR_rds_db_master_password or a gitignored .auto.tfvars — do not commit."
   sensitive   = true
 }
+
+# ------------------------------------------------------------------
+# cert-manager / TLS — mirrors the eks module's cert-manager variables.
+# ------------------------------------------------------------------
+
+variable "route53_account_id" {
+  type        = string
+  description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
+}
+
+variable "route53_hosted_zone_id" {
+  type        = string
+  description = "Route53 hosted zone ID for ACME DNS-01 challenge."
+}
+

@@ -177,3 +177,58 @@ resource "aws_iam_role_policy_attachment" "ebs_csi_AmazonEBSCSIDriverPolicy" {
   role       = aws_iam_role.ebs_csi.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 }
+
+# ------------------------------------------------------------------
+# IRSA role for cert-manager (EKS account).
+# Bound to system:serviceaccount:cert-manager:cert-manager via OIDC.
+# Only permission: assume the delegate role in the Route53 account
+# so cert-manager can perform DNS-01 challenges cross-account.
+# ------------------------------------------------------------------
+
+data "aws_iam_policy_document" "cert_manager_assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    principals {
+      type        = "Federated"
+      identifiers = [aws_iam_openid_connect_provider.eks.arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(aws_iam_openid_connect_provider.eks.url, "https://", "")}:sub"
+      values   = ["system:serviceaccount:cert-manager:cert-manager"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(aws_iam_openid_connect_provider.eks.url, "https://", "")}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "cert_manager" {
+  name               = "routebox-${var.environment}-cert-manager"
+  assume_role_policy = data.aws_iam_policy_document.cert_manager_assume_role.json
+
+  tags = {
+    Name = "routebox-${var.environment}-cert-manager"
+  }
+}
+
+data "aws_iam_policy_document" "cert_manager_sts" {
+  statement {
+    effect    = "Allow"
+    actions   = ["sts:AssumeRole"]
+    resources = ["arn:aws:iam::${var.route53_account_id}:role/routebox-cert-manager-route53-delegate"]
+  }
+}
+
+resource "aws_iam_role_policy" "cert_manager_sts" {
+  name   = "sts-assume-route53-delegate"
+  role   = aws_iam_role.cert_manager.id
+  policy = data.aws_iam_policy_document.cert_manager_sts.json
+}
+

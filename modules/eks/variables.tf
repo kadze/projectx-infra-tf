@@ -93,3 +93,18 @@ variable "cost_center" {
   description = "Cost-allocation tag value."
   default     = "platform"
 }
+
+# ------------------------------------------------------------------
+# cert-manager / TLS
+# ------------------------------------------------------------------
+
+variable "route53_account_id" {
+  description = "AWS account ID that owns the Route53 hosted zone used for ACME DNS-01 challenges."
+  type        = string
+}
+
+variable "route53_hosted_zone_id" {
+  description = "Route53 hosted zone ID for ACME DNS-01 challenge."
+  type        = string
+}
+

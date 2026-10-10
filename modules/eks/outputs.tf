@@ -43,3 +43,8 @@ output "kms_key_alias" {
   description = "Alias name for the K8s secrets KMS key."
   value       = aws_kms_alias.eks_secrets.name
 }
+
+output "cert_manager_irsa_role_arn" {
+  description = "IRSA role ARN for cert-manager."
+  value       = aws_iam_role.cert_manager.arn
+}

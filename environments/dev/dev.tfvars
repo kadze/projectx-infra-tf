@@ -37,3 +37,10 @@ eks_cluster_admin_role_arns = [
   "arn:aws:iam::414866527708:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_1a0f858bba60ce65",
   "arn:aws:iam::414866527708:role/gha-routebox-shipments-api-dev",
 ]
+
+# ------------------------------------------------------------------
+# cert-manager / TLS
+# ------------------------------------------------------------------
+
+route53_account_id     = "381492277294"
+route53_hosted_zone_id = "Z07170741J23D2RIICAXK"

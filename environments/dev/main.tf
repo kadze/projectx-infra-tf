@@ -32,6 +32,9 @@ module "eks" {
   node_max_size                = var.eks_node_max_size
   cluster_admin_role_arns      = var.eks_cluster_admin_role_arns
   cost_center                  = var.cost_center
+
+  route53_account_id     = var.route53_account_id
+  route53_hosted_zone_id = var.route53_hosted_zone_id
 }
 
 module "rds" {
